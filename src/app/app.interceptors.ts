@@ -21,3 +21,23 @@ export class AuthInterceptor implements HttpInterceptor {
         }));
     }
 }
+
+@Injectable()
+export class TokenInterceptor implements HttpInterceptor {
+    constructor(private authSvc: AuthService) {}
+
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+        if (request.url.indexOf('https://agave.designsafe-ci.org') > -1) {
+            if (this.authSvc.isLoggedIn()) {
+                request = request.clone({
+                    setHeaders: {
+                        Authorization: 'Bearer ' + this.authSvc.userToken.token
+                    }
+                });
+            }
+        }
+
+        return next.handle(request);
+    }
+}

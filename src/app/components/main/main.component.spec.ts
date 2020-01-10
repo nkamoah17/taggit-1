@@ -7,8 +7,6 @@ import {AuthService} from '../../services/authentication.service';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {of} from 'rxjs';
 import {FeatureCollection} from '../../models/models';
-import {featureFixture} from '../../fixtures/feature.fixture';
-import {userFixture} from '../../fixtures/user.fixture';
 
 
 describe('MainComponent', () => {
@@ -35,8 +33,6 @@ describe('MainComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MainComponent);
     component = fixture.componentInstance;
-    when(MockData.activeFeature).thenReturn(of(featureFixture));
-    when(MockAuth.currentUser).thenReturn(of(userFixture));
     fixture.detectChanges();
   });
 

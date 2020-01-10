@@ -14,9 +14,10 @@ import { AppComponent } from './app.component';
 import { MapComponent} from './components/map/map.component';
 import { MainComponent } from './components/main/main.component';
 import { NotFoundComponent } from './components/notfound/notfound.component';
+import { ControlBarComponent } from './components/control-bar/control-bar.component';
 import { AuthService } from './services/authentication.service';
 import { CallbackComponent } from './components/callback/callback.component';
-import {AuthInterceptor} from './app.interceptors';
+import {AuthInterceptor, TokenInterceptor} from './app.interceptors';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { ModalFileBrowserComponent } from './components/modal-file-browser/modal-file-browser.component';
 import {environment} from '../environments/environment';
@@ -25,6 +26,7 @@ import {environment} from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent, MapComponent, NotFoundComponent, MainComponent,
+    ControlBarComponent,
     CallbackComponent,
     ModalFileBrowserComponent,
   ],
@@ -49,6 +51,11 @@ import {environment} from '../environments/environment';
       provide: HTTP_INTERCEPTORS,
       multi: true,
       useClass: AuthInterceptor
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: TokenInterceptor
     },
     {
       provide: APP_BASE_HREF,

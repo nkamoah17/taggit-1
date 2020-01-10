@@ -1,0 +1,51 @@
+<div class="grid-x align-justify align-middle">
+    <div class="cell small-4 no-padding">
+        <div class="grid-x align-middle">
+<!--            <button class="button tiny success" (click)="openCreateProjectModal()"> <i class="fas fa-plus"></i></button>-->
+            <ul class="dropdown vertical menu" dropdown>
+                <li class="is-dropdown-submenu-parent">
+                    <button dropdownToggle  class="dropdown button tiny hollow">
+                        Maps
+                        <span class="" *ngIf="selectedProject"> : {{selectedProject.name}}</span>
+                    </button>
+                    <ul *dropdownMenu class="menu is-dropdown-submenu">
+                        <li class="clickable" *ngFor="let p of projects" (click)="selectProject(p)" [ngClass]="{'active-project': p === selectedProject}">
+                            {{ p.name }}
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <button class="button tiny default" (click)="openFilePicker()">File Browser</button>
+
+        </div>
+
+    </div>
+    <div class="cell auto">
+        <div class="grid-x align-right align-middle">
+            <div style="padding-right: 5px">
+                <span> Live Refresh </span>
+            </div>
+            <div class="switch tiny">
+                <input class="switch-input" id="exampleSwitch" type="checkbox"
+                       name="exampleSwitch"
+                       (change)="setLiveRefresh(liveRefresh)"
+                       [(ngModel)]="liveRefresh">
+                <label class="switch-paddle" for="exampleSwitch">
+                    <span class="show-for-sr">Live refresh</span>
+                </label>
+            </div>
+            <div style="padding-right: 5px;padding-left: 5px">
+                <span class="lat-lon-label"> Lat: </span>
+                <span> {{ mapMouseLocation.lat | number:'.4' }}</span>
+                <span class="lat-lon-label"> Lon: </span>
+                <span> {{ mapMouseLocation.lng | number:'.4' }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div>-->
+<!--  <div>-->
+<!--    <span> lat: </span>-->
+<!--    <span> lon: </span>-->
+<!--  </div>-->
+<!--</div>-->

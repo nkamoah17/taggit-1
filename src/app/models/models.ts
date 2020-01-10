@@ -2,7 +2,6 @@ import {Feature as GeoJSONFeature,
   GeoJsonProperties,
   Geometry,
   FeatureCollection as IFeatureCollection } from 'geojson';
-import {environment} from '../../environments/environment';
 
 
 // TODO: break these out into their own files
