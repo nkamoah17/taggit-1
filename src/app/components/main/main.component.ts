@@ -10,20 +10,20 @@ import {RemoteFile} from 'ng-tapis';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.styl']
+  styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
 
-  public activeFeature: Feature;
-  public currentUser: AuthenticatedUser;
+  // public activeFeature: Feature;
+  // public currentUser: AuthenticatedUser;
 
   constructor(private geoDataService: GeoDataService, private authService: AuthService, private bsModalService: BsModalService,) {}
 
   ngOnInit() {
-    this.geoDataService.activeFeature.subscribe( next => {
-      this.activeFeature = next;
-    });
-    this.authService.currentUser.subscribe(next => this.currentUser = next);
+	// this.geoDataService.activeFeature.subscribe( next => {
+	//   this.activeFeature = next;
+	// });
+	// this.authService.currentUser.subscribe(next => this.currentUser = next);
   }
 
 

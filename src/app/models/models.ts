@@ -15,6 +15,30 @@ export interface IPointCloud {
   project_id: number;
 }
 
+// export interface Group {
+//   groupName: Array<string>;
+//   formList: Array<any>;
+//   // type: any;
+// }
+
+// export interface Group {
+//   groupName: Array<string>;
+//   formList: Array<any>;
+//   // type: any;
+// }
+
+export interface Group {
+  groupName: string;
+  formList: Array<any>;
+  color: string;
+  // type: any;
+}
+
+export class Group implements Group {
+
+}
+
+
 export class AssetFilters {
 
   // bbox has the following format: [sw_lng, sw_lat, ne_lng, ne_lat], the same as leaflet
@@ -22,18 +46,18 @@ export class AssetFilters {
   assetType: Set<string> = new Set<string>();
 
   updateAssetTypes(assetType: string) {
-    this.assetType.has(assetType) ? this.assetType.delete(assetType) : this.assetType.add(assetType);
+	this.assetType.has(assetType) ? this.assetType.delete(assetType) : this.assetType.add(assetType);
   }
 
   updateBBox(bbox: Array<number>): void {
-    this.bbox = bbox;
+	this.bbox = bbox;
   }
 
   toJson() {
-    return {
-      assetType: [...this.assetType],
-      bbox: this.bbox
-    };
+	return {
+	  assetType: [...this.assetType],
+	  bbox: this.bbox
+	};
   }
 
 }
@@ -59,20 +83,20 @@ export class AuthToken {
    * @param expires: Date
    */
   constructor(token: string, expires: Date) {
-    this.token = token;
-    this.expires = new Date(expires);
+	this.token = token;
+	this.expires = new Date(expires);
   }
 
   static fromExpiresIn(token: string, expires_in: number) {
-    const expires = new Date(new Date().getTime() + expires_in * 1000);
-    return new AuthToken(token, expires);
+	const expires = new Date(new Date().getTime() + expires_in * 1000);
+	return new AuthToken(token, expires);
   }
 
   /**
    * Checks if the token is expired or not
    */
   public isExpired(): boolean {
-    return new Date().getTime() > this.expires.getTime();
+	return new Date().getTime() > this.expires.getTime();
   }
 }
 
@@ -95,7 +119,7 @@ export class FeatureAsset implements IFeatureAsset {
 
   // TODO: Implenent this
   get assetPath(): string {
-    return '';
+	return '';
   }
 
 }
@@ -141,29 +165,29 @@ export class Feature implements AppGeoJSONFeature {
   project_id?: number;
 
   constructor(f: AppGeoJSONFeature) {
-    this.geometry = f.geometry;
-    this.properties = f.properties;
-    this.id = f.id;
-    this.type = f.type;
-    this.assets = f.assets;
-    this.styles = f.styles;
-    this.project_id = f.project_id;
+	this.geometry = f.geometry;
+	this.properties = f.properties;
+	this.id = f.id;
+	this.type = f.type;
+	this.assets = f.assets;
+	this.styles = f.styles;
+	this.project_id = f.project_id;
   }
 
   featureType?(): string {
-    if (this.assets &&
-        this.assets.length === 1) {
-      return this.assets[0].asset_type;
-    }
+	if (this.assets &&
+	this.assets.length === 1) {
+	  return this.assets[0].asset_type;
+	}
 
-    if (this.assets &&
-        this.assets.length > 1) {
-      return 'collection';
-    }
+	if (this.assets &&
+	this.assets.length > 1) {
+	  return 'collection';
+	}
 
-    if (!this.assets.length) {
-      return this.geometry.type;
-    }
+	if (!this.assets.length) {
+	  return this.geometry.type;
+	}
 
 
 

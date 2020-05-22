@@ -30,13 +30,13 @@ export class TapisFilesService {
   listFiles(system: string, path: string) {
     this.tapis.filesList({systemId: system, filePath: path})
       .subscribe(resp => {
-        const files = resp.result;
-        // This removes the first item in the listing, which in Agave is always a reference to self.
-        const current = files.shift();
-        current.path = this.getParentPath(current.path);
-        current.name = '..';
-        files.unshift(current);
-        this._listing.next(files);
+	const files = resp.result;
+	// This removes the first item in the listing, which in Agave is always a reference to self.
+	const current = files.shift();
+	current.path = this.getParentPath(current.path);
+	current.name = '..';
+	files.unshift(current);
+	this._listing.next(files);
       });
   }
 
@@ -47,7 +47,4 @@ export class TapisFilesService {
     const parentPath = arr.join('/');
     return parentPath;
   }
-
-
-
 }

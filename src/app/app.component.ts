@@ -4,7 +4,7 @@ import {AuthService} from './services/authentication.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.styl'],
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   title = 'viewer';
@@ -12,8 +12,6 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.authService.login();
+	this.authService.login();
   }
 }
-
-
