@@ -20,6 +20,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import { NgxMasonryModule } from 'ngx-masonry';
+import { AngularResizedEventModule } from 'angular-resize-event';
+
+
 
 
 import { FileSizeModule } from 'ngx-filesize';
@@ -48,6 +51,7 @@ import { SelectGroupComponent } from './components/side-bar/select-group/select-
 import { SelectImageComponent } from './components/side-bar/select-image/select-image.component';
 import { TagGeneratorComponent } from './components/side-bar/tag-generator/tag-generator.component';
 import { TagImagesComponent } from './components/side-bar/tag-images/tag-images.component';
+import { ViaComponent } from './components/via/via.component';
 
 @NgModule({
   declarations: [
@@ -66,11 +70,13 @@ import { TagImagesComponent } from './components/side-bar/tag-images/tag-images.
 	SelectImageComponent,
 	TagGeneratorComponent,
 	TagImagesComponent,
+	ViaComponent,
   ],
   imports: [
 	// this is for the ng-tapis library
 	ApiModule.forRoot({rootUrl: 'https://agave.designsafe-ci.org/'}),
 	BrowserModule,
+	FormsModule,
 	AppRoutingModule,
 	HttpClientModule,
 	BrowserAnimationsModule,
@@ -90,10 +96,12 @@ import { TagImagesComponent } from './components/side-bar/tag-images/tag-images.
 	MatIconModule,
 	AccordionModule.forRoot(),
 	ReactiveFormsModule,
-	FormsModule,
 	FileSizeModule,
 	BsDropdownModule.forRoot(),
-	CommonModule,
+	CommonModule,   
+	AngularResizedEventModule,
+
+
   ],
   providers: [
 	AuthService,

@@ -9,6 +9,7 @@ import { ImageGalleryComponent } from './components/image-gallery/image-gallery.
 // import { PresetGeneratorComponent } from './components/preset-generator/preset-generator.component';
 import { TagGeneratorComponent } from './components/side-bar/tag-generator/tag-generator.component';
 import { TagImagesComponent } from './components/side-bar/tag-images/tag-images.component';
+import { ViaComponent } from './components/via/via.component';
 
 @Injectable()
 export class Activate implements CanActivate {
@@ -32,7 +33,9 @@ const routes: Routes = [
 	// {path: 'preset', component: PresetGeneratorComponent, canActivateChild: [Activate]}
 
 	{path: 'tagger', component: TagImagesComponent, canActivateChild: [Activate]},
-	{path: 'preset', component: TagGeneratorComponent, canActivateChild: [Activate]}
+	{path: 'preset', component: TagGeneratorComponent, canActivateChild: [Activate]},
+	{path: 'via', component: ViaComponent, canActivateChild: [Activate]}
+
   ]},
 
   {path: 'callback', component: CallbackComponent},

@@ -1,11 +1,17 @@
-import { Component, OnInit, OnDestroy, TemplateRef} from '@angular/core';
+import { Component, OnInit, OnDestroy, TemplateRef, HostListener} from '@angular/core';
 import { GroupsService } from '../../../services/groups.service';
 import { FormsService } from '../../../services/forms.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { trial } from '../../trial';
+import { TRIAL } from '../../mock_trial';
 
+
+	
+	
+	
 @Component({
   selector: 'app-tag-images',
   templateUrl: './tag-images.component.html',
@@ -21,7 +27,8 @@ export class TagImagesComponent implements OnInit {
   private activeGroup$: Subscription;
   private activeFeatureId$: Subscription;
   form: FormGroup;
-  showSubitem: boolean = true;
+	showSubitem: boolean = true;
+	trial = TRIAL;
 
   constructor(
 	private groupsService: GroupsService,
@@ -83,5 +90,6 @@ export class TagImagesComponent implements OnInit {
 
 	} else {
 	}
-  }
+	}
+	
 }

@@ -11,7 +11,7 @@ export interface AppEnvironment {
 }
 
 export const environment: AppEnvironment = {
-  production: true,
+  production: false,
   apiUrl: 'https://agave.designsafe-ci.org/geo/v2/',
   clientId: 'vtDnU5adn3ue7MMNPTq__bvxSa8a',
   baseHref: '/'

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { FormsService } from '../../../services/forms.service';
 import { GroupsService } from '../../../services/groups.service';
 import { Subscription } from 'rxjs';
@@ -20,8 +20,12 @@ export class SelectImageComponent implements OnInit, OnDestroy {
   showSidebar: boolean
   showSubitem: boolean = true;
 
-  constructor(private formsService: FormsService,
-			  private groupsService: GroupsService) {}
+	constructor(private formsService: FormsService,
+				private renderer: Renderer2,
+		private groupsService: GroupsService) { }
+	
+	
+
 
   ngOnInit() {
 	this.groups$ = this.groupsService.groups.subscribe((next) => {
@@ -35,6 +39,8 @@ export class SelectImageComponent implements OnInit, OnDestroy {
 	this.activeGroup$ = this.groupsService.activeGroup.subscribe((next) => {
 	  this.activeGroup = next;
 	});
+		
+
   }
 
   getActiveFeatures() {

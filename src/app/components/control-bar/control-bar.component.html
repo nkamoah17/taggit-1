@@ -1,95 +1,129 @@
 <mat-toolbar class="top-bar" color="primary">
-  <img src="assets/logo.svg" width="40PX">
-  <span style="color: white">Taggit</span>
+	<img src="assets/logo.svg" width="40PX">
+	<span style="color: white">Taggit</span>
+  
+	<button mat-icon-button [matMenuTriggerFor]="project" color="foreground" class="project-menu">
 
-  <button mat-icon-button [matMenuTriggerFor]="project" color="foreground" class="project-menu">
-	<mat-icon>menu</mat-icon>
-  </button>
-
-
-  <mat-menu #project="matMenu">
-	<span mat-menu-item *ngIf="selectedProject">
-	  Current Project : {{selectedProject.name}}
-	</span>
-	<button mat-menu-item [matMenuTriggerFor]="projectList">Select Project</button>
-	<button mat-menu-item (click)="openFilePicker()">File Browser</button>
-  </mat-menu>
-
-  <mat-menu #projectList="matMenu">
-	<button mat-menu-item class="clickable" *ngFor="let p of projects" (click)="selectProject(p)" [ngClass]="{'active-project': p === selectedProject}">
-	  {{ p.name }}
+	  <mat-icon>menu</mat-icon>
 	</button>
-  </mat-menu>
+  
+  
+	<mat-menu #project="matMenu">
+	  <span mat-menu-item *ngIf="selectedProject">
+		Current Project : {{selectedProject.name}}
+	  </span>
+	  <button mat-menu-item [matMenuTriggerFor]="projectList">Select Project</button>
+	  <button mat-menu-item (click)="openFilePicker()">File Browser</button>
+	</mat-menu>
+  
+	<mat-menu #projectList="matMenu">
+	  <button mat-menu-item class="clickable" *ngFor="let p of projects" (click)="selectProject(p)" [ngClass]="{'active-project': p === selectedProject}">
+		{{ p.name }}
+	  </button>
+	</mat-menu>
+  
+	<span class="example-spacer"></span>
+  
 
-  <span class="example-spacer"></span>
-
-  <div *ngIf="showSidebar; else doThat" class="path-buttons">
-	<div class="slides" style="line-height: 1; font-size: 12px">
-	  {{imageName}}
-	  <div class="lr-buttons" style="margin-top: 5px">
-		<i (click)="otherPath(false)" style="margin-right: 10px; cursor: pointer" class="fas fa-angle-left"></i>
-		<i (click)="otherPath(true)" style="margin-left: 10px; cursor: pointer" class="fas fa-angle-right"></i>
-	  </div>
-	</div>
-  </div>
-
-  <ng-template #doThat>
-	<!-- <input placeholder="Search images" -->
-	<!--	   name="" -->
-	<!--	   type="text" -->
-	<!--	   value="" -->
-	<!--	   class="goods"/> -->
-
-
-	<!-- <mat-form-field appearance="fill"> -->
-	<!--   <input matInput placeholder="Search"> -->
-	<!-- </mat-form-field> -->
-
-	<!-- <mat-form-field class="example-full-width"> -->
-	<!--   <input matInput type="text" -->
-	<!--		 [(ngModel)]="value" -->
-	<!--		 placeholder="Search"> -->
-	<!-- </mat-form-field> -->
-  </ng-template>
-
-  <span class="example-spacer"></span>
-
-  <div *ngIf="showGroup" class="group-bar grid-x align-right">
-	<button mat-raised-button
-			(click)="openAddGroupModal(addGroupModal)">Add Group</button>
-
-	<ng-template #addGroupModal>
-	  <mat-form-field>
-		<mat-label>Group Name</mat-label>
-		<input matInput placeholder="Group Name" #groupInput>
-	  </mat-form-field>
-	  <br/>
-	  <br/>
-	  <button mat-raised-button matDialogClose color="primary" (click)="addToGroupService(groupInput.value)">Add Group</button>
-	  <button mat-button matDialogClose color="secondary">Cancel</button>
+  
+	<ng-template #doThat>
+	  <!-- <input placeholder="Search images" -->
+	  <!--	   name="" -->
+	  <!--	   type="text" -->
+	  <!--	   value="" -->
+	  <!--	   class="goods"/> -->
+  
+  
+	  <!-- <mat-form-field appearance="fill"> -->
+	  <!--   <input matInput placeholder="Search"> -->
+	  <!-- </mat-form-field> -->
+  
+	  <!-- <mat-form-field class="example-full-width"> -->
+	  <!--   <input matInput type="text" -->
+	  <!--		 [(ngModel)]="value" -->
+	  <!--		 placeholder="Search"> -->
+	  <!-- </mat-form-field> -->
 	</ng-template>
-  </div>
+  
+	<span class="example-spacer"></span>
+  
+	<div *ngIf="showGroup" class="group-bar grid-x align-right">
+	  <button mat-raised-button
+			  (click)="openAddGroupModal(addGroupModal)">Add Group</button>
+  
+	  <ng-template #addGroupModal>
+		<mat-form-field>
+		  <mat-label>Group Name</mat-label>
+		  <input matInput placeholder="Group Name" #groupInput>
+		</mat-form-field>
+		<br/>
+		<br/>
+		<button mat-raised-button matDialogClose color="primary" (click)="addToGroupService(groupInput.value)">Add Group</button>
+		<button mat-button matDialogClose color="secondary">Cancel</button>
+	  </ng-template>
+	</div>
+  
+	<!-- <button *ngIf="groupsExist && showSidebar && activePane == 'preset'" -->
+	<!--		  mat-button -->
+	<!--		  color="secondary" -->
+	<!--		  (click)="goToRoute()">Tagger</button> -->
+  
+	<!-- <button *ngIf="groupsExist && showSidebar && activePane == 'tagger'" -->
+	<!--		  mat-button -->
+	<!--		  color="secondary" -->
+	<!--		  (click)="goToRoute()">Preset</button> -->
+  
+  
+	<button *ngIf="groupsExist && !showSidebar"
+			mat-raised-button
+			style="margin-left: 15px"
+			(click)="openSidebar()">Taggit!</button>
 
-  <!-- <button *ngIf="groupsExist && showSidebar && activePane == 'preset'" -->
-  <!--		  mat-button -->
-  <!--		  color="secondary" -->
-  <!--		  (click)="goToRoute()">Tagger</button> -->
-
-  <!-- <button *ngIf="groupsExist && showSidebar && activePane == 'tagger'" -->
-  <!--		  mat-button -->
-  <!--		  color="secondary" -->
-  <!--		  (click)="goToRoute()">Preset</button> -->
+	<div *ngIf=showSidebar class="toolbar">
+		<svg onclick="project_open_select_project_file()" viewbox="0 0 24 24"><use xlink:href="#icon_open"></use><title>Open Project</title></svg> 
+		<svg onclick="project_save_with_confirm()" viewbox="0 0 24 24"><use xlink:href="#icon_save"></use><title>Save Project</title></svg>
+		<svg onclick="settings_panel_toggle()" viewbox="0 0 24 24"><use xlink:href="#icon_settings"></use><title>Update Project Settings</title></svg>
+	
+		<svg onclick="" viewbox="0 0 24 24"><use xlink:href="#icon_checkbox"></use><title>Locate Files</title></svg>
 
 
-  <button *ngIf="groupsExist && !showSidebar"
-		  mat-raised-button
-		  style="margin-left: 15px"
-		  (click)="openSidebar()">Taggit!</button>
+		<svg onclick="sel_local_data_file('annotations')" style="margin-left:1rem;" viewbox="0 0 24 24"><use xlink:href="#icon_fileupload"></use><title>Import Annotations from CSV</title></svg>
+		<svg onclick="download_all_region_data('csv')" viewbox="0 0 24 24"><use xlink:href="#icon_filedownload"></use><title>Download Annotations as CSV</title></svg>
 
-  <button *ngIf="groupsExist && showSidebar"
-		  mat-raised-button
-		  style="margin-left: 15px"
-		  (click)="openSidebar()">Gallery</button>
+		<svg onclick="image_grid_toggle()" id="toolbar_image_grid_toggle" #toolbar_image_grid_toggle style="margin-left:1rem;" viewbox="0 0 24 24"><use xlink:href="#icon_gridon"></use><title>Switch to Image Grid View</title></svg>
+		<svg onclick="annotation_editor_toggle_all_regions_editor()" viewbox="0 0 24 24"><use xlink:href="#icon_insertcomment"></use><title>Toggle Annotation Editor</title></svg> 
 
 
-</mat-toolbar>
+
+		 <svg onclick="move_to_prev_image()" style="margin-left:1rem;" viewbox="0 0 24 24"><use xlink:href="#icon_prev"></use><title>Previous Image</title></svg>
+		<svg onclick="toggle_img_fn_list_visibility()" viewbox="0 0 24 24"><use xlink:href="#icon_list"></use><title>Toggle Filename List</title></svg> 
+		<svg onclick="move_to_next_image()" viewbox="0 0 24 24"><use xlink:href="#icon_next"></use><title>Next Image</title></svg> 
+
+		<svg onclick="zoom_in()" style="margin-left:1rem;" viewbox="0 0 24 24"><use xlink:href="#icon_zoomin"></use><title>Zoom In</title></svg>
+		<svg onclick="zoom_out()" viewbox="0 0 24 24"><use xlink:href="#icon_zoomout"></use><title>Zoom Out</title></svg>
+		<svg onclick="sel_all_regions()" viewbox="0 0 24 24" style="margin-left:1rem;"><use xlink:href="#icon_selectall"></use><title>Select All Regions</title></svg>
+		<svg onclick="copy_sel_regions()" viewbox="0 0 24 24"><use xlink:href="#icon_copy"></use><title>Copy Regions</title></svg>
+		<svg onclick="paste_sel_regions_in_current_image()" viewbox="0 0 24 24"><use xlink:href="#icon_paste"></use><title>Paste Regions</title></svg>
+		<svg onclick="paste_to_multiple_images_with_confirm()" viewbox="0 0 24 24"><use xlink:href="#icon_pasten"></use><title>Paste Region in Multiple Images</title></svg>
+		<svg onclick="del_sel_regions_with_confirm()" viewbox="0 0 24 24"><use xlink:href="#icon_pasteundo"></use><title>Undo Regions Pasted in Multiple Images</title></svg>
+		<svg onclick="del_sel_regions()" viewbox="0 0 24 24"><use xlink:href="#icon_close"></use><title>Delete Region</title></svg>
+	  </div> 
+  
+
+	  <!-- <div *ngIf="showSidebar; else doThat" class="path-buttons">
+		<div class="slides" style="line-height: 1; font-size: 12px">
+		  {{imageName}}
+		  <div class="lr-buttons" style="margin-top: 5px">
+			<i (click)="otherPath(false)" style="margin-right: 10px; cursor: pointer" class="fas fa-angle-left"></i>
+			<i (click)="otherPath(true)" style="margin-left: 10px; cursor: pointer" class="fas fa-angle-right"></i>
+		  </div>
+		</div>
+	  </div> -->
+	    
+	<button *ngIf="groupsExist && showSidebar"
+	mat-raised-button
+	style="margin-left: 15px"
+	(click)="openSidebar()">Gallery</button>
+
+  
+  </mat-toolbar>
