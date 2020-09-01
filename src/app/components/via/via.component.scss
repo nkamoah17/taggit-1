@@ -127,7 +127,7 @@ textarea {
 	}
 }
 .toolbar {
-	display: inline-block;
+	display: inline-flexbox;
 	margin-left: 1rem;
 	svg {
 		fill: white;
@@ -160,6 +160,20 @@ textarea {
 		}
 	}
 }
+
+.top-bar {
+	position: fixed;
+	margin-top: -50px;
+	height: 50px;
+	// padding: 5px;
+	// padding-left: 0.5em;
+	// flex-wrap: nowrap;
+	// position: fixed;
+	// // overflow: hidden;
+	// width: 100%;
+	z-index: 999;
+  }
+
 .middle_panel {
 	display: table;
 	table-layout: fixed;
@@ -197,7 +211,7 @@ textarea {
 		position: absolute;
 		top: 0px;
 		left: 0px;
-		outline: 1rem solid;
+		outline: 1px solid black;
 	}
 	.visible {
 		visibility: visible !important;
@@ -406,6 +420,20 @@ button.leftsidebar_accordion.active {
 		color: #000000;
 	}
 }
+
+.imager {
+	width: 60%;
+	height: calc(100vh - 50px);
+	background-color: #616161;
+  }
+
+  
+
+.view-image {
+	max-width: 80%;
+	height: auto;
+  }
+
 #attribute_properties {
 	display: table;
 	width: 100%;
@@ -671,6 +699,7 @@ button.leftsidebar_accordion.active {
 		}
 	}
 }
+
 ul.region_shape {
 	font-size: xx-large;
 	list-style-type: none;
