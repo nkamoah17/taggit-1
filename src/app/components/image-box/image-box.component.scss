@@ -1,6 +1,7 @@
 :host {
   .img-container {
 	position: relative;
+	border: 4px solid black;
 	// width: 100%;
 	// height: 100%;
   }
@@ -82,6 +83,10 @@
 	top: 5px;
   }
 
+  .image-option .path{
+	bottom: 10px
+  }
+
   .img-selected {
 	border: solid #4FB876;
 	border-width: 5px;
@@ -143,6 +148,21 @@
 	align-items: center;
 	text-align: center;
   }
+  .image-option .img__description {
+	position: relative;
+	top: 0;
+	bottom: 10px;
+	left: 0;
+	right: 0;
+	background: rgba(29, 106, 154, 0.72);
+	color: #fff;
+	visibility: hidden;
+	opacity: 1;
+  
+	/* transition effect. not necessary */
+	transition: opacity .2s, visibility .2s;
+  }
+  
 
   .title {
 	background-color: #ccc;

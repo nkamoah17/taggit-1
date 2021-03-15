@@ -30,7 +30,8 @@ export class ImageBoxComponent implements OnInit {
   modalRef: BsModalRef;
   activeGroup: string;
 
-  unselectAll: boolean = false;
+	unselectAll: boolean = false;
+	show: boolean;
 
   // FIXME Bad
   imageCollection: any = {};
@@ -83,6 +84,7 @@ export class ImageBoxComponent implements OnInit {
 		this.status = false;
 	  }
 	});
+		this.show = true;
   }
 
   // click() {
@@ -179,7 +181,14 @@ export class ImageBoxComponent implements OnInit {
 	});
 
 	this.groupsService.addGroup(this.groupList);
-  }
+	}
+	
+	getImagePath() {
+		this.feature.assets[0].path
+	}
+	toggle() {
+		this.show = !this.show;
+	}
 
   getGroupNameFromColor(color: string) {
 	this.groupList.forEach(e => {

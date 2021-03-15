@@ -55,6 +55,9 @@
 	  <i class="fas fa-trash"></i>
 	</div>
 
+
+
+
 	<ng-template #deleteImage>
 	  <div>
 	  This image will be deleted from the current project. It will not be deleted from the Data Depot.
@@ -71,6 +74,15 @@
 		 matTooltipPosition="below"
 		 (click)="openImageAddModal(addMoreToGroup)">
 	  <i class="fas fa-plus"></i>
+	</div>
+
+
+	<div class="image-option"
+		matTooltip="Show FilePath"
+		 matTooltipPosition="below"
+		 (click)= "toggle()">
+		 
+		 <i class="fas fa-paperclip"></i>
 	</div>
 
 	<ng-template #addMoreToGroup>
@@ -134,3 +146,4 @@
   </div>
 
 </div>
+<p class="card-text" [hidden] = this.show >{{this.feature.assets[0].path}}</p>

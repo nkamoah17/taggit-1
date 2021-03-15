@@ -9,6 +9,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {ModalModule, BsDropdownModule, AccordionModule} from 'ngx-foundation';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatTreeModule } from '@angular/material/tree';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
@@ -48,6 +49,7 @@ import { SelectGroupComponent } from './components/side-bar/select-group/select-
 import { SelectImageComponent } from './components/side-bar/select-image/select-image.component';
 import { TagGeneratorComponent } from './components/side-bar/tag-generator/tag-generator.component';
 import { TagImagesComponent } from './components/side-bar/tag-images/tag-images.component';
+import { MatProgressBar } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import { TagImagesComponent } from './components/side-bar/tag-images/tag-images.
 	ControlBarComponent,
 	CallbackComponent,
 	ModalFileBrowserComponent,
-	ImageGalleryComponent,
+		ImageGalleryComponent,
+	MatProgressBar,
 	// TaggerComponent,
 	// PresetGeneratorComponent,
 	ImageBoxComponent,
@@ -75,7 +78,8 @@ import { TagImagesComponent } from './components/side-bar/tag-images/tag-images.
 	HttpClientModule,
 	BrowserAnimationsModule,
 	InfiniteScrollModule,
-	NgxSpinnerModule,
+		NgxSpinnerModule,
+	MatTreeModule,
 	NgxMasonryModule,
 	ModalModule.forRoot(),
 	MatMenuModule,
